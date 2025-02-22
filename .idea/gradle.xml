@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/candymode" />
+            <option value="$PROJECT_DIR$/classic" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/createCandyGlassMazeLevels" />
+            <option value="$PROJECT_DIR$/desktop" />
+            <option value="$PROJECT_DIR$/framework" />
+            <option value="$PROJECT_DIR$/loading" />
+            <option value="$PROJECT_DIR$/menu" />
+            <option value="$PROJECT_DIR$/settings" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/store" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

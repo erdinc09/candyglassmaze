@@ -1,0 +1,3 @@
+package com.parabolagames.glassmaze.store
+
+internal class EventCloseStoreDialog

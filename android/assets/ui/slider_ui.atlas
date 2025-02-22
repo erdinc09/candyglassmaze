@@ -1,0 +1,41 @@
+
+slider_ui.png
+size: 256,64
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background
+  rotate: false
+  xy: 107, 33
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+disabled_background
+  rotate: false
+  xy: 107, 11
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+knob
+  rotate: false
+  xy: 55, 3
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+knob_after
+  rotate: false
+  xy: 129, 33
+  size: 20, 20
+  orig: 20, 20
+  offset: 0, 0
+  index: -1
+knob_disabled
+  rotate: false
+  xy: 2, 2
+  size: 51, 51
+  orig: 51, 51
+  offset: 0, 0
+  index: -1

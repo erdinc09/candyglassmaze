@@ -1,0 +1,3 @@
+package com.parabolagames.glassmaze.settings
+
+internal class EventOpenAboutDialog

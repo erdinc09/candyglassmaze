@@ -1,0 +1,20 @@
+
+buttons_rectangle.png
+size: 512,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+pressed
+  rotate: false
+  xy: 2, 2
+  size: 232, 128
+  orig: 232, 128
+  offset: 0, 0
+  index: -1
+released
+  rotate: false
+  xy: 236, 2
+  size: 232, 128
+  orig: 232, 128
+  offset: 0, 0
+  index: -1
