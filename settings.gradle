@@ -1,4 +1,3 @@
-include ':createCandyGlassMazeLevels'
 include ':classic'
 include ':candymode'
 include ':menu'

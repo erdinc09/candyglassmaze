@@ -1,43 +1,32 @@
-apply plugin: "java"
-apply plugin: 'kotlin'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+eclipse.project.name = appName + '-core'
 apply plugin: 'kotlin-kapt'
 
-sourceCompatibility = 1.8
-
-[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-sourceSets.main.java.srcDirs = ["src/"]
-
-eclipse.project.name = appName + "-core"
-buildscript {
-
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
-}
-
 dependencies {
-    kapt "com.google.dagger:dagger-compiler:$dagger_version"
-}
+    api "com.badlogicgames.ashley:ashley:$ashleyVersion"
+    api "com.badlogicgames.box2dlights:box2dlights:$box2dlightsVersion"
+    api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
+    api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+    api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx-freetype:$gdxVersion"
+    api "com.badlogicgames.gdx:gdx:$gdxVersion"
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
 
 
-kapt {
-    includeCompileClasspath = false
-}
+    api project(":shared")
+    api project(":loading")
+    api project(":store")
+    api project(":settings")
+    api project(":menu")
+    api project(":candymode")
+    api project(":classic")
 
-compileKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
+    if(enableGraalNative == 'true') {
+        implementation "io.github.berstanio:gdx-svmhelper-annotations:$graalHelperVersion"
     }
+
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
 }
-compileTestKotlin {
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-}
+
+
