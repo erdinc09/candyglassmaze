@@ -1,4 +1,4 @@
-* JDK 11
+* JDK 17
 
 
 
@@ -8,6 +8,6 @@
 * add ios
 * add povray and gimp scripts
 * enhance readme
-* update to lwjgl3
 * updgrade to java21
 * documnet dagger design
+* fix native builds (currently broken)

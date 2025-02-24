@@ -3,7 +3,7 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "io.github.fourlastor:construo:1.6.1"
+        classpath "io.github.fourlastor:construo:1.7.1"
         if(enableGraalNative == 'true') {
             classpath "org.graalvm.buildtools.native:org.graalvm.buildtools.native.gradle.plugin:0.9.28"
         }
@@ -43,9 +43,6 @@ dependencies {
         implementation "io.github.berstanio:gdx-svmhelper-extension-box2d:$graalHelperVersion"
         implementation "io.github.berstanio:gdx-svmhelper-extension-freetype:$graalHelperVersion"
     }
-
-    //TODO: remove after upgrading to lwjgl3
-    api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
 }
 
 def os = System.properties['os.name'].toLowerCase()
@@ -91,11 +88,11 @@ construo {
     targets.configure {
         create("linuxX64", Target.Linux) {
             architecture.set(Target.Architecture.X86_64)
-            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.12%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.12_7.tar.gz")
+            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_x64_linux_hotspot_17.0.14_7.tar.gz")
         }
         create("macM1", Target.MacOs) {
             architecture.set(Target.Architecture.AARCH64)
-            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.12%2B7/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.12_7.tar.gz")
+            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_aarch64_mac_hotspot_17.0.14_7.tar.gz")
             // macOS needs an identifier
             identifier.set("io.github.some_example_name." + appName)
             // Optional: icon for macOS
@@ -103,7 +100,7 @@ construo {
         }
         create("macX64", Target.MacOs) {
             architecture.set(Target.Architecture.X86_64)
-            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.12%2B7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.12_7.tar.gz")
+            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_x64_mac_hotspot_17.0.14_7.tar.gz")
             // macOS needs an identifier
             identifier.set("io.github.some_example_name." + appName)
             // Optional: icon for macOS
@@ -111,7 +108,7 @@ construo {
         }
         create("winX64", Target.Windows) {
             architecture.set(Target.Architecture.X86_64)
-            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.12%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.12_7.zip")
+            jdkUrl.set("https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.14%2B7/OpenJDK17U-jdk_x64_windows_hotspot_17.0.14_7.zip")
             // Uncomment the next line to show a console when the game runs, to print messages.
             //useConsole.set(true)
         }
@@ -137,7 +134,7 @@ distributions {
     }
 }
 
-//startScripts.dependsOn(':lwjgl3:jar')
+startScripts.dependsOn(':desktop:jar')
 startScripts.classpath = project.tasks.jar.outputs.files
 
 if(enableGraalNative == 'true') {
