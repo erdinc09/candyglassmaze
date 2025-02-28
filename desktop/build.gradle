@@ -17,6 +17,7 @@ apply plugin: 'org.jetbrains.kotlin.jvm'
 
 
 import io.github.fourlastor.construo.Target
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
 mainClassName = 'com.parabolagames.glassmaze.desktop.DesktopLauncher'
@@ -27,7 +28,7 @@ java.targetCompatibility = 8
 if (JavaVersion.current().isJava9Compatible()) {
     compileJava.options.release.set(8)
 }
-kotlin.compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_1_8)
+kotlin.compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
 
 dependencies {
     implementation "com.badlogicgames.gdx-controllers:gdx-controllers-desktop:$gdxControllersVersion"

@@ -33,8 +33,8 @@ android {
   }
   defaultConfig {
     applicationId 'com.parabolagames.glassmaze'
-    minSdkVersion 23
-    targetSdkVersion 34
+    minSdkVersion 19
+    targetSdkVersion 35
     versionCode 1
     versionName "1.0"
     multiDexEnabled true
@@ -52,7 +52,6 @@ android {
   }
 
   kotlin.compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
-  
 }
 
 repositories {
@@ -81,7 +80,7 @@ dependencies {
   natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86"
   natives "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-x86_64"
 
-  implementation "com.badlogicgames.gdxpay:gdx-pay-android-googlebilling:$gdxPayVersion"
+  implementation "com.badlogicgames.gdxpay:gdx-pay-android-googlebilling:1.3.8"
 }
 
 // Called every time gradle gets executed, takes the native dependencies of

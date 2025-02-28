@@ -9,6 +9,6 @@ dependencies {
         api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
         api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
         api "com.google.dagger:dagger:$daggerVersion"
-        api 'com.google.guava:guava:30.0-android'
+        api 'com.google.guava:guava:31.1-android'
     }
 }
