@@ -40,6 +40,7 @@ public class DesktopLauncher {
         //// You may also need to configure GPU drivers to fully disable Vsync; this can cause screen tearing.
         configuration.setWindowedMode(450, 800);
         configuration.setWindowIcon("ic_launcher_foreground.png");
+        configuration.setResizable(false);
         //configuration.setHdpiMode(HdpiMode.Pixels);
         return configuration;
     }

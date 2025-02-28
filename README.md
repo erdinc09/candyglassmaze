@@ -33,7 +33,6 @@ Sample screenshots:
 
 # TODOs
 
-* add android
 * add ios
 * add povray and gimp scripts
 * upgrade to java21
