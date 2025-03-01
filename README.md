@@ -33,7 +33,6 @@ Sample screenshots:
 
 # TODOs
 
-* add ios
 * add povray and gimp scripts
 * upgrade to java21
 * document dagger design, module dependencies ...
