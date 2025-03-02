@@ -29,11 +29,10 @@ Sample screenshots:
 
 # Notes:
 
-* JDK 17 in desktop environment.
+* JDK 21 in desktop environment.
+* IOS, Android is tested in simulators.
 
 # TODOs
-
 * add povray and gimp scripts
-* upgrade to java21
 * document dagger design, module dependencies ...
 * experiment with graalvm
