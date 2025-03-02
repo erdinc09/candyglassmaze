@@ -1,0 +1,1 @@
+povray loopMenuCandy.ini +L../lib +ua

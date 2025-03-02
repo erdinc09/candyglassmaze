@@ -1,0 +1,2 @@
+povray  -IcandyglassIcon.pov +L../lib +Oout/candyglassicon.png Declare=PHOTON=1 Declare=FLOOR=1 quickresHigh2.ini
+povray  -IcandyglassIcon.pov +L../lib +ua +Oout/candyglassiconTemplate.png Declare=PHOTON=0 Declare=FLOOR=0 quickresHigh2.ini

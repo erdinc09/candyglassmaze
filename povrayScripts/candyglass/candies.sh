@@ -1,0 +1,16 @@
+cd candy2
+sh candy.sh
+cd ../candy3
+sh candy.sh
+cd ../candy4
+sh candy.sh
+cd ../candy5
+sh candy.sh
+cd ../candy6
+sh candy.sh
+cd ../candy7
+sh candy.sh
+cd ../candy8
+sh candy.sh
+cd ../candy9
+sh candy.sh

@@ -1,0 +1,449 @@
+#version  3.7;
+
+#include "../lib/candies.pov"
+#include "../lib/spheres.inc"
+#include "../lib/texts.inc"
+#include "../lib/candybox.inc"
+#include "coordinates.pov"
+#include "functions.inc"
+
+//#declare SHOW_FOG = 0; //1 ise fog var
+//#declare SHOW_MEDIA = 0; //1 ise media var
+//#declare TEXT=1;
+//#declare OTHER_THAN_TEXT=0;
+//#declare FLOOR=1;
+
+#ifndef(TEXT)
+    #declare TEXT=1;
+#end
+
+#ifndef(OTHER_THAN_TEXT)
+    #declare OTHER_THAN_TEXT=1;
+#end
+
+#ifndef(FLOOR)
+    #declare FLOOR=1;
+#end
+
+#ifndef(PHOTON)
+    #declare PHOTON=0;
+#end
+
+#ifndef(AXES)
+    #declare AXES=0;
+#end
+
+#ifndef(SHOW_FOG)
+    #declare SHOW_FOG=0;
+#end
+
+#ifndef(SHOW_MEDIA)
+    #declare SHOW_MEDIA=0;
+#end
+
+#ifndef(FLOOR_WITHOUT_LINES)
+    #declare FLOOR_WITHOUT_LINES=0;
+#end
+
+
+#macro scad_axes(axe_length)
+    object { 
+        AxisXYZ( axe_length, axe_length, axe_length, Tex_Dark, Tex_White)
+    }
+#end
+
+#if(AXES)
+    scad_axes(2)
+#end
+
+global_settings
+{ 
+    assumed_gamma 1
+}
+
+#if(PHOTON)
+    global_settings { 
+        max_trace_level 35
+        assumed_gamma 2.2
+        ambient_light rgb< 0,0,0>
+        
+        photons { 
+            spacing 0.05
+            autostop 0
+            jitter 0.4
+            count 1000000
+            media 0
+            max_trace_level 25
+        }
+        
+    }
+#end
+
+camera { 
+    location <1, 5, -6>
+    up    <0,1.33,0>
+    right  <1,0,0>
+    look_at <0,0,-0.8>
+    angle 35
+}
+
+
+light_source { 
+    #if(PHOTON)
+        //<2000, 2500, 2000>
+        <200, 250, 10>
+    #else
+        <200, 250, 0>
+    #end
+    
+    , 1 area_light z*60, y*60, 12, 12 adaptive 0
+    media_interaction on
+    #if(PHOTON)
+        photons { 
+            refraction on
+            reflection on
+        }
+    #end
+}
+
+#macro photon_in_object()
+    photons { 
+        collect on
+        refraction on
+        reflection off
+        target  1
+    }
+#end
+
+#macro brokenSphereGlassType()
+    #if(GLASS_TYPE = 1)
+        texture { T_Glass3 } 
+        interior { I_Glass4 } 
+    #elseif (GLASS_TYPE = 2)
+        texture { T_Dark_Green_Glass } 
+        interior { I_Glass4 } 
+    #elseif (GLASS_TYPE = 3)
+        texture { T_Vicksbottle_Glass } 
+        interior { I_Glass4 } 
+    #elseif (GLASS_TYPE = 4)
+        texture { T_Orange_Glass } 
+        interior { I_Glass4 } 
+    #elseif (GLASS_TYPE = 5)
+        texture { T_Ruby_Glass } 
+        interior { I_Glass4 } 
+    #end
+#end
+
+
+
+
+
+#if (SHOW_FOG)
+    fog { 
+        color rgbt <.7,.7,.7>
+        fog_type 2
+        fog_alt 0.2
+        fog_offset 0
+        distance 0.5
+        turbulence <.15, .15, .15>
+        omega 0.35
+        lambda 1.25
+        octaves 5
+    }
+#end
+
+#if (SHOW_MEDIA)
+    //global_settings { assumed_gamma 1 } 
+    box { 
+        <-1,-1,-2.5>, <1,3,0>
+        pigment { rgbt 1 } hollow
+        interior { 
+            media { 
+                scattering { 1,0.15 extinction 0.01 } 
+                samples 30
+            }
+        }
+        rotate -70*z
+    }
+#end
+
+
+#declare candies = union { 
+    
+    
+    object { 
+        //-------------------------
+        CandyGlassLike1()
+        rotate  -40*x
+        translate <-0.3,0.3,-0.7>
+    }
+    
+    
+    object { 
+        CandyGlassLike2()
+        translate <0.2,0.1,-1.6>
+    }
+    
+    object { 
+        CandyGlassLike2()
+        rotate 30*z
+        translate <-0.2,0.3,-1.6>
+    }
+    
+    object { 
+        CandyGlassLike1()
+        translate <-0.6,0.1,-2.2>
+        
+    }
+    object { 
+        CandyGlassLike3()
+        translate <0.2,0.1,-2.2>
+        
+    }
+    
+    object { 
+        CandyGlassLike4()
+        translate <0.5,0.1,-1.0>
+        
+    }
+    
+    object { 
+        Candy(pigment { color rgb< 0.0, 1.0, 0.0> } ) //green
+        translate <0.8,0.3,1.0>
+    }
+    object { 
+        Candy(pigment { color rgb< 1.0, 0.15, 0.0> } ) //  red orange
+        translate <1,0.3,1.3>
+    }
+    object { 
+        Candy(pigment { color rgb< 1.0, 0.0, 0.0> } ) //  red
+        rotate -30*z
+        translate <1.1,0.3,1.15>
+    }
+    
+    object { 
+        Candy(pigment { color rgb< 0.0, 1.0, 1.0> } ) //cyan
+        translate <-0.8,0.3,0.0>
+    }
+    
+    object { 
+        Candy(pigment { color rgb< 1.0, 1.0, 0.0> } ) //yellow
+        translate <-0.8,0.3,0.4>
+    }
+    object { 
+        Candy(pigment { color rgb< 1.0, 1.0, 1.0> } ) //white
+        translate <-0.4,0.3,0.2>
+    }
+    
+    object { 
+        Candy(pigment { color rgb< 0.75, 0.5, 1.0> } ) //light violet
+        translate <-0.0,0.3,0.2>
+    }
+    
+    
+    object { 
+        Candy(pigment { color rgb< 0.0, 0.0, 0.0> } ) //black
+        translate <0.8, 0.1,-2.2>
+    }
+    
+    object { 
+        Candy(pigment { color rgb< 1.0, 1.0, 0.0> } ) //yellow
+        translate <0.3, 0.1,-2.8>
+    }
+    object { 
+        Candy(pigment { color rgb< 1.0, 0.0, 0.0> } ) //  red
+        translate <0.7, 0.1,-2.7>
+    }
+    
+    
+    
+    
+    
+    
+    //little spiral
+    object { 
+        CandySpiralTexture()
+        translate <-0.8,0.2,-1.5>
+    }
+    
+    
+    object { 
+        CandyCane()
+        scale 0.02
+        rotate 90*x
+        translate <0.3,0.2,1.2>
+    }
+    
+    object { 
+        CandyCane()
+        scale 0.02
+        rotate 100*x
+        rotate 30*y
+        //rotate -15*z
+        translate <0.8,0.2,1.7>
+    }
+}
+
+
+#declare box_with_candies = union { 
+    object { 
+        brokenCandybox
+        #if(PHOTON)
+            photon_in_object()
+        #end
+        rotate y*20
+    }
+    
+    object { 
+        brokenCandyboxOther
+        #if(PHOTON)
+            photon_in_object()
+        #end
+        
+        rotate -y*30
+        translate <0.7,0,-0.8>
+        
+    }
+    object { 
+        candies
+    }
+}
+
+union { 
+    
+    #if (OTHER_THAN_TEXT)
+        union { 
+            //big spiral
+            object { 
+                CandySpiralTexture()
+                scale 1
+                translate <-0.75,0.55,-1.5>
+            }
+            
+            object { 
+                sphere_high
+                brokenSphereGlassType()
+                #if(PHOTON)
+                    photon_in_object()
+                #end
+                rotate 210*x
+                rotate -20*z
+                translate <-0.8,0.5,-1.4>
+            }
+        }
+        
+        
+        object { 
+            sphere_low
+            brokenSphereGlassType()
+            #if(PHOTON)
+                photon_in_object()
+            #end
+            rotate 30*x
+            rotate -70*y
+            translate <-0.6,0.5,-2.6>
+        }
+        
+        object { 
+            sphere { 
+                <0,0,0>, 0.3
+            }
+            brokenSphereGlassType()
+            #if(PHOTON)
+                photon_in_object()
+            #end
+            rotate 30*x
+            rotate -70*y
+            translate <0.5,0.7,-3.8>
+        }
+        
+        object { 
+            box_with_candies
+            translate <0.5,0,0.5>
+        }
+        
+        #local Candy_Cane_Green = pigment { 
+            gradient x+y
+            color_map { 
+                [0.25 rgb <0/255,128/255,0/255>]
+                [0.25 rgb <1,1,1>]
+                [0.75 rgb <1,1,1>]
+                [0.75 rgb <0/255,128/255,0/255>]
+            }
+        }
+        
+        object { 
+            SpiralCandy(Candy_Cane)
+            scale 0.15
+            rotate -10*y
+            translate <-2,0.09,2>
+            translate <0.3,0,-1>
+        }
+        
+        object { 
+            SpiralCandy(Candy_Cane_Green)
+            scale 0.15
+            rotate -20*y
+            rotate 20*z
+            rotate -12*x
+            translate <-2.7,0.3,2>
+            translate <0.3,0,-1>
+        }
+    #end  
+    #if (TEXT)
+    object { 
+            text_0
+            scale 1 // 1.5
+            translate <-3,0.05,2.9>
+            translate <0,0,-0.6>
+            scale 1.3
+        }
+        object { 
+            text_1
+            scale 1 // 1.5
+            translate <-1.7,0.05,2.9>
+            translate <0,0,-0.6>
+            scale 1.3
+        }
+        
+        object { 
+            text_2
+            translate <-2.4,0.05,2.6>
+            translate <-0.1,0,-0.6>
+            scale 1
+        }
+    #end
+}
+
+
+#if(FLOOR)
+    
+    plane
+    { 
+        y, 0
+        pigment
+        { 
+            wood color_map { 
+                [0 rgb <.9,.7,.3>][1 rgb <.8,.5,.2>]
+            }
+            turbulence .5
+            scale <1, 1, 20>*.2
+        }
+        finish { specular 1 } 
+       
+       #if(FLOOR_WITHOUT_LINES=0)
+            normal
+            { 
+                gradient x 1
+                slope_map
+                { 
+                    [0 <0, 1>] // 0 height, strong slope up
+                    [.05 <1, 0>] // maximum height, horizontal
+                    [.95 <1, 0>] // maximum height, horizontal
+                    [1 <0, -1>] // 0 height, strong slope down
+                }
+            }
+        #end
+        
+    }
+#end

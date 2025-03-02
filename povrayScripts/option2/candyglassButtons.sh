@@ -1,0 +1,1 @@
+povray  -IcandyglassButtons.pov +Oout/candyGlassButtons.png Declare=PHOTON=1  Declare=AXES=0 +L../lib  quickresHigh.ini

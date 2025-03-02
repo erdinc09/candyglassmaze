@@ -1,0 +1,1 @@
+povray -L${POVRAY_SCAD_LIB} -Icube.pov +ua +Ocube.png  quickresHigh.ini

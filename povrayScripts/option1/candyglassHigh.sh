@@ -1,0 +1,1 @@
+povray  -Icandyglass.pov +Oout/candyGlassHigh.png  quickresHigh.ini

@@ -1,0 +1,2 @@
+povray  -Iglass.pov  +Oglass.png Declare=FLOOR=1 Declare=PIECE_1=0 Declare=PIECE_2=0 Declare=ALL=1 +L../../lib  res.ini
+povray  -Iglass.pov  +Oglass_template.png Declare=FLOOR=0 Declare=PIECE_1=0 Declare=PIECE_2=0 Declare=ALL=1 +ua +L../../lib  res.ini

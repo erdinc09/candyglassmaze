@@ -1,0 +1,1 @@
+povray  -Ibackground.pov +OgameBackground.png  quickresHigh.ini

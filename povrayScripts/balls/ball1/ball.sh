@@ -1,0 +1,1 @@
+povray  +L../lib +Oball.png Declare=FLOOR=0  +ua res.ini

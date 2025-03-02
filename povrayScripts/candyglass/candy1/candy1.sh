@@ -1,0 +1,1 @@
+povray  -Icandy1.pov +Ocandy1.png +L../../lib  +ua quickresHigh.ini

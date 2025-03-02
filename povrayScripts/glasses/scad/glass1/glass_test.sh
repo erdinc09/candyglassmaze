@@ -1,0 +1,1 @@
+povray  -L${POVRAY_SCAD_LIB} glass_test.ini

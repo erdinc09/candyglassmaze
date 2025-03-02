@@ -1,0 +1,28 @@
+sol dugme
+ pos 	108 1213
+ size 	314 315
+ center 265 1370
+
+
+Text
+60
+
+left ring text path
+390
+70
+1175
+
+left ring text path
+380
+75
+1180
+
+
+sag dugme
+	pos 783 1212
+	size 	314 315
+	center 940 1369
+
+right ring text path
+	388
+	746 1175

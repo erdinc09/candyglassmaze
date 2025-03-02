@@ -1,0 +1,1 @@
+povray -L${POVRAY_SCAD_LIB} -Ibackground.pov +ua +OdialogBackGround.png  quickresHigh.ini
