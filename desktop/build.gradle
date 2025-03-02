@@ -86,6 +86,15 @@ construo {
     // Optional, defaults to project version property
     version.set("$projectVersion")
 
+//    jlink {
+//        // add arbitrary modules to be included when running jlink
+//        modules.addAll("jdk.unsupported","java.base", "java.desktop", "java.management", "java.prefs", "java.xml")
+//        // guess the modules from the jar using jdeps, defaults to true
+//        guessModulesFromJar.set(false)
+//        // include default crypto modules, defaults to true
+//        includeDefaultCryptoModules.set(true)
+//    }
+
     targets.configure {
         create("linuxX64", Target.Linux) {
             architecture.set(Target.Architecture.X86_64)
@@ -97,7 +106,7 @@ construo {
             // macOS needs an identifier
             identifier.set("io.github.some_example_name." + appName)
             // Optional: icon for macOS
-            macIcon.set(project.file("icons/logo.icns"))
+            //macIcon.set(project.file("icons/logo.icns"))
         }
         create("macX64", Target.MacOs) {
             architecture.set(Target.Architecture.X86_64)
@@ -105,7 +114,7 @@ construo {
             // macOS needs an identifier
             identifier.set("io.github.some_example_name." + appName)
             // Optional: icon for macOS
-            macIcon.set(project.file("icons/logo.icns"))
+            //macIcon.set(project.file("icons/logo.icns"))
         }
         create("winX64", Target.Windows) {
             architecture.set(Target.Architecture.X86_64)
