@@ -36,5 +36,4 @@ Sample screenshots:
 * add povray and gimp scripts
 * upgrade to java21
 * document dagger design, module dependencies ...
-* fix native builds, jlink (currently broken)
 * experiment with graalvm

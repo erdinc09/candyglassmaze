@@ -86,14 +86,12 @@ construo {
     // Optional, defaults to project version property
     version.set("$projectVersion")
 
-//    jlink {
-//        // add arbitrary modules to be included when running jlink
-//        modules.addAll("jdk.unsupported","java.base", "java.desktop", "java.management", "java.prefs", "java.xml")
-//        // guess the modules from the jar using jdeps, defaults to true
-//        guessModulesFromJar.set(false)
-//        // include default crypto modules, defaults to true
-//        includeDefaultCryptoModules.set(true)
-//    }
+    jlink {
+        // add arbitrary modules to be included when running jlink
+        modules.addAll("jdk.unsupported","java.base", "java.desktop", "java.management", "java.prefs", "java.xml", "java.logging")
+        // guess the modules from the jar using jdeps, defaults to true
+        guessModulesFromJar.set(false)
+    }
 
     targets.configure {
         create("linuxX64", Target.Linux) {
